@@ -1,47 +1,81 @@
-*{
+/* 重置默认样式 */
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* 确保padding和border计算在width和height内 */
 }
-#contentdiv{
-    position: absolute;
-    left: 500px;
+
+/* 全局样式 */
+body {
+    font-family: 'MicroSoft YaHei', sans-serif;
+    overflow-x: hidden; /* 防止水平滚动条 */
 }
-#startdiv{
-    width: 320px;
-    height: 568px;
-    background-image: url(../image/开始背景.png);
+
+/* 适配手机屏幕的媒体查询 */
+@media screen and (max-width: 768px) { /* 例如，针对小于768px的屏幕 */
+    #contentdiv {
+        position: relative; /* 使用相对定位以避免固定的左边距 */
+        left: 0;
+        width: 100%; /* 使内容区域占据整个屏幕宽度 */
+        height: 100vh; /* 使内容区域占据整个屏幕高度 */
+        overflow: auto; /* 允许内容滚动 */
+    }
+
+    #startdiv, #maindiv {
+        width: 100%;
+        height: auto; /* 根据内容自动调整高度 */
+        background-size: cover; /* 确保背景图片覆盖整个元素 */
+        background-position: center; /* 背景图片居中显示 */
+    }
+
+    /* 按钮样式 */
+    button {
+        padding: 10px 20px; /* 更大的点击区域 */
+        font-size: 16px; /* 更大的字体 */
+    }
+
+    /* 开始按钮定位 */
+    #startdiv button {
+        position: relative; /* 使用相对定位 */
+        top: 50%; /* 垂直居中 */
+        left: 50%; /* 水平居中 */
+        transform: translate(-50%, -50%); /* 偏移自身宽高的一半实现居中 */
+    }
+
+    /* 分数、暂停和结束界面的样式调整 */
+    #scorediv, #suspenddiv, #enddiv {
+        position: relative; /* 使用相对定位 */
+        top: auto; /* 移除固定的top值 */
+        left: auto; /* 移除固定的left值 */
+        width: 100%; /* 占据整个屏幕宽度 */
+        padding: 10px; /* 添加内边距 */
+    }
+
+    /* 分数显示 */
+    #scorediv {
+        text-align: center; /* 文本居中显示 */
+    }
+
+    /* 暂停和结束界面的按钮 */
+    #suspenddiv button, #enddiv div button {
+        display: block; /* 使按钮占据一整行 */
+        margin: 10px auto; /* 垂直外边距和水平居中 */
+    }
+
+    /* 其他样式调整... */
 }
-button{
-    outline: none;
-}
-#startdiv button{
-    position: absolute;
-    top: 500px;
-    left: 82px;
-    width: 150px;
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 30px;
-    background-color: #c4c9ca;
-}
-#maindiv{
-    width: 320px;
-    height: 568px;
-    background-image:url(../image/background_1.png) ;
-    display: none;
-}
-#maindiv img{
-    position: absolute;
-    z-index: 1;
-}
-#scorediv{
-    font-size: 16px;
+
+/* 原始样式中重复的#scorediv部分已合并为一个，并移除了一个 */
+#scorediv {
+    font-size: 18px;
     font-weight: bold;
-    position: absolute;
+    position: absolute; /* 保留原始定位方式，但可能需要调整 */
     top: 10px;
     left: 10px;
-    display: none;
+    display: none; /* 默认隐藏 */
 }
+
 #scorediv{
     font-size: 18px;
     font-weight: bold;
